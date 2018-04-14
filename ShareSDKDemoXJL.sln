@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShareSDKDemoXJL.Plugins", "ShareSDKDemoXJL.Plugins.csproj", "{45711DCA-67C8-38DB-E382-D6A844C9277E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShareSDKDemoXJL", "ShareSDKDemoXJL.csproj", "{3902F35C-504F-A2A2-FC7A-8511BACCF32E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShareSDKDemoXJL.Editor.Plugins", "ShareSDKDemoXJL.Editor.Plugins.csproj", "{8A14693D-6E05-0D23-1973-2BF568660335}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45711DCA-67C8-38DB-E382-D6A844C9277E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45711DCA-67C8-38DB-E382-D6A844C9277E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45711DCA-67C8-38DB-E382-D6A844C9277E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45711DCA-67C8-38DB-E382-D6A844C9277E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3902F35C-504F-A2A2-FC7A-8511BACCF32E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3902F35C-504F-A2A2-FC7A-8511BACCF32E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3902F35C-504F-A2A2-FC7A-8511BACCF32E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3902F35C-504F-A2A2-FC7A-8511BACCF32E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A14693D-6E05-0D23-1973-2BF568660335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A14693D-6E05-0D23-1973-2BF568660335}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A14693D-6E05-0D23-1973-2BF568660335}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A14693D-6E05-0D23-1973-2BF568660335}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
