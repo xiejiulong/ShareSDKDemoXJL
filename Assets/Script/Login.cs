@@ -26,6 +26,8 @@ public class Login : MonoBehaviour
 
     public wxUserInofo wxinfo;
 
+    public GameObject webviewPrefab;
+
     void Start()
     {
         ssdk = ShareSDKManager.Instance.ssdk;
@@ -79,6 +81,93 @@ public class Login : MonoBehaviour
         {
             ssdk.CancelAuthorize(PlatformType.WeChat);
             Utility.MakeToast("注销成功");
+        }
+    }
+
+    public void OnWebTest()
+    {
+        GameObject go = Instantiate(webviewPrefab);
+        UniWebView webView = go.GetComponent<UniWebView>();
+        if (webView != null)
+        {
+            webView.OnLoadComplete += OnLoadComplete;
+            webView.InsetsForScreenOreitation += InsetsForScreenOreitation;
+            webView.OnReceivedMessage += OnReceivedMessage;
+            webView.OnEvalJavaScriptFinished += OnEvalJavaScriptFinished;
+            webView.toolBarShow = true;
+
+            webView.url = "http://uniwebview.onevcat.com/demo/index.html";
+            webView.Load();
+        }
+    }
+
+    void OnEvalJavaScriptFinished(UniWebView webView, string r)
+    {
+        Utility.MakeToast(r);
+        //result.text = r;
+    }
+
+    void OnReceivedMessage(UniWebView webView, UniWebViewMessage message)
+    {
+        // You can check the message path and arguments to know which `uniwebview` link is clicked.
+        // UniWebView will help you to parse your link if it follows the url argument format.
+        // However, there is also a "rawMessage" property you could use if you need to use some other formats and want to parse it yourself.
+        Utility.MakeToast("OnRecvivedMessage:" +　message.rawMessage + "\n" + message.path);
+        Debug.LogError("OnRecvivedMessage:" + message.rawMessage);
+        if (message.path == "close")
+        {
+            //result.text = "";
+            Utility.MakeToast("close");
+            Destroy(webView);
+            //_webView = null;
+        }
+
+        if (message.path == "add")
+        {
+            int num1 = 0;
+            int num2 = 0;
+
+            // num1 and num2 will be got from the url argument.
+            if (int.TryParse(message.args["num1"], out num1) && int.TryParse(message.args["num2"], out num2))
+            {
+                int sum = num1 + num2;
+                //result.text = num1 + " + " + num2 + " = " + sum;
+                Utility.MakeToast("sum = " + sum.ToString());
+            }
+            else
+            {
+                //result.text = "Invalid Input";
+            }
+        }
+    }
+
+    void OnLoadComplete(UniWebView webView, bool success, string errorMessage)
+    {
+        if (success)
+        {
+            Utility.MakeToast("加载页面完成");
+            webView.Show();
+        }
+        else
+        {
+            Debug.Log("Something wrong in webview loading: " + errorMessage);
+        }
+    }
+
+    // This method will be called when the screen orientation changed. Here we return UniWebViewEdgeInsets(5,5,5,5)
+    // for both situation, which means the inset is 5 point for iOS and 5 pixels for Android from all edges.
+    // Note: UniWebView is using point instead of pixel in iOS. However, the `Screen.width` and `Screen.height` will give you a
+    // pixel-based value. 
+    // You could get a point-based screen size by using the helper methods: `UniWebViewHelper.screenHeight` and `UniWebViewHelper.screenWidth` for iOS.
+    UniWebViewEdgeInsets InsetsForScreenOreitation(UniWebView webView, UniWebViewOrientation orientation)
+    {
+        if (orientation == UniWebViewOrientation.Portrait)
+        {
+            return new UniWebViewEdgeInsets(50, 50, 50, 50);
+        }
+        else
+        {
+            return new UniWebViewEdgeInsets(50, 50, 50, 50);
         }
     }
 
@@ -273,7 +362,7 @@ public class Login : MonoBehaviour
 
         public string openid;
         public string nickname;
-        public byte sex;
+        public byte   sex;
         public string province;
         public string city;
         public string country;
@@ -282,8 +371,5 @@ public class Login : MonoBehaviour
         public string privilege2;
         public string unionid;
         public Texture2D texturehead;
-
-
-
     }
 }

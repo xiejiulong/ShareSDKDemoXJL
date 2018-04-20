@@ -66,34 +66,34 @@ public class Play : MonoBehaviour
         // 分享前先创建content对象
         ShareContent content = new ShareContent();
         // 设置分享的正文字
-        content.SetText(resultText.text);
+        content.SetText("金游房卡麻将");
         // 设置分享的图片
         // SetImagePath用于本地图片，参数为图片路径
         // SetImageUrl 用于网络图片，参数为图片网址
         // SetImageArray 用于多图分享，参数为图片网址的string数组，仅支持网络图片，仅支持Android
         content.SetImagePath(Application.persistentDataPath + "/Screenshot.png");
         // 设置分享的标题与标题的url
-        //content.SetTitle("标题");
-        //content.SetTitleUrl("http://www.sikiedu.com");
-        //content.SetSite("站点");
-        //content.SetSiteUrl("http://www.sikiedu.com");
+        content.SetTitle("标题");
+        content.SetTitleUrl("http://d.51v.cn/");
+        content.SetSite("站点");
+        content.SetSiteUrl("http://d.51v.cn/");
         //content.SetMusicUrl();
-        //content.SetUrl("http://www.sikiedu.com");
+        content.SetUrl("http://d.51v.cn/");
         // 设定分享类型的主要类型
-        content.SetShareType(ContentType.Image);
+        content.SetShareType(ContentType.Webpage);
 
         // 平台特异性分享内容的设置
-        ShareContent sinaWeiBoContent = new ShareContent();
-        sinaWeiBoContent.SetText(resultText.text + "\n via 新浪微博");
+        //ShareContent sinaWeiBoContent = new ShareContent();
+        //sinaWeiBoContent.SetText(resultText.text + "\n via 微信");
 
         // 在指定平台上，使用第二个参数的内容去覆盖主内容的值
-        content.SetShareContentCustomize(PlatformType.SinaWeibo, sinaWeiBoContent);
+        //content.SetShareContentCustomize(PlatformType.WeChatMoments, sinaWeiBoContent);
 
         // 显示分享框
         //PlatformType[] platforms = {PlatformType.SinaWeibo,PlatformType.QQ, PlatformType.WeChat};
         //ssdk.ShowPlatformList(platforms, content, 100, 100);
         string[] platformList =
-            {"5", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54"};
+            {"5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54"};
         content.SetHidePlatforms(platformList);
         ssdk.ShowPlatformList(null, content, 100, 100);
     }
