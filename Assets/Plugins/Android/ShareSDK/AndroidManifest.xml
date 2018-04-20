@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cn.sharesdk.demo"
+    package="com.javgame.gamelobby"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -17,10 +17,12 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     
+	<!--
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
-
+        android:minSdkVersion="16"
+        android:targetSdkVersion="25" />
+	-->
+	
     <application
     	android:name="com.mob.MobApplication">
         <activity
@@ -62,13 +64,13 @@
 
         <!-- 微信分享回调 -->
         <activity
-            android:name=".wxapi.WXEntryActivity"
+            android:name="com.javgame.gamelobby.wxapi.WXEntryActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true" />
         <!-- 易信分享回调 -->
         <activity
-            android:name=".yxapi.YXEntryActivity"
+            android:name="com.javgame.sharesdkdemoxjl.yxapi.YXEntryActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:excludeFromRecents="true"
@@ -76,7 +78,7 @@
             android:launchMode="singleTop" />			
         <!-- 支付宝分享回调 -->
         <activity
-            android:name=".apshare.ShareEntryActivity"
+            android:name="com.javgame.sharesdkdemoxjl.apshare.ShareEntryActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"/>

@@ -59,15 +59,30 @@ public class Info : MonoBehaviour
 
     public void OnDetailButtonClick()
     {
-        ssdk.GetUserInfo(PlatformType.SinaWeibo);
+        ssdk.GetUserInfo(PlatformType.WeChat);
     }
 
     public void OnSignOutButtonClick()
     {
         // 取消指定平台的授权
-        ssdk.CancelAuthorize(PlatformType.SinaWeibo);
+        ssdk.CancelAuthorize(PlatformType.WeChat);
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
+
+    /*
+     * {
+     * "country":"CN", 
+     * "province":"Jiangsu", 
+     * "headimgurl":"http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqia1ia8X0cdqEibvoWwKrRBTonZcRSxQgNXJlRg6EULfPzia4kFd1uicBItwibQ1kqpnmoIyDaUtCE2uFg/132", 
+     * "unionid":"oc3_ew2FcFW6O_Y2NA6B_-wQqZHI", 
+     * "openid":"odJuv1DHgTNn_1iAKioKRvFO-Fb8", 
+     * "nickname":"\u8c22\u4e5d\u9f99", 
+     * "city":"Suzhou", 
+     * "sex":1, 
+     * "language":"zh_CN", 
+     * "privilege":[]
+     * }
+     */
 
     void OnGetUserInfoResultHandler(int reqID, ResponseState state, PlatformType type, Hashtable data)
     {
@@ -75,7 +90,7 @@ public class Info : MonoBehaviour
         {
             Utility.WriteFile(Application.persistentDataPath, "UserInfo.dat", data.toJson());
 
-            Utility.MakeToast("获取用户详细信息:成功[您的位置：]"+ Utility.UnicodeToString(data["location"].ToString()));
+            Utility.MakeToast("获取用户详细信息:成功[您的城市：]"+ Utility.UnicodeToString(data["city"].ToString()));
         }
         else if (state == ResponseState.Fail)
         {

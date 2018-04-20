@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Security.Policy;
 using UnityEngine;
 using System.IO;
+using System.Text;
 using System.Text.RegularExpressions;
 
 public static class Utility
@@ -84,5 +85,21 @@ public static class Utility
         {
             return ((char) Convert.ToInt32(m.Groups[1].Value, 16)).ToString();
         });
+    }
+
+    public static string UnicodeToString2(string sIn)
+    {
+        if (!sIn.Contains("\\u"))
+        {
+            return sIn;
+        }
+        StringBuilder sOut = new StringBuilder();
+
+        string[] arr = sIn.Split(new string[] { "\\u" }, StringSplitOptions.RemoveEmptyEntries);
+        foreach (string s in arr)
+        {
+            sOut.Append((char)Convert.ToInt32(s.Substring(0, 4), 16) + s.Substring(4));
+        }
+        return sOut.ToString();
     }
 }
